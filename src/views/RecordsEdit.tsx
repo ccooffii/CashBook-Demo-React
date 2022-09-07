@@ -1,5 +1,5 @@
 import {Link, useParams} from "react-router-dom";
-import React, {useEffect, useLayoutEffect, useState} from "react";
+import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
 import styled from "styled-components";
 import {TopBar} from "./AddTag";
 import Icon from "../components/Icon";
@@ -74,7 +74,7 @@ const RecordInfoBox = styled.ul`
       -webkit-user-select: text;
       border: none;
       width: 30%;
-      direction: rtl;
+      text-align: right;
       margin-right: 10px;
     }
   }
@@ -106,11 +106,21 @@ export const RecordsEdit:React.FC = () => {
     const {findRecord,deleteRecord,updateRecord} = useRecords()
     const {findDay} = useDate()
     let record = findRecord(parseInt(id))
-    console.log(record);
     const [category,setCategory] = useState<('-'|'+')>('-')
     const [categoryList] = useState<('-'|'+')[]>(['-','+'])
     const [newAmount,setNewAmount] = useState(0)
     const [newNote,setNewNote] = useState('')
+    const count = useRef(0);
+    useEffect(() => {
+        count.current += 1;
+    })
+    useEffect(()=>{
+        if(count.current>1){
+            setNewAmount(record.amount)
+            setCategory(record.category)
+            setNewNote(record.note)
+        }
+    },[record])
     const submit = () => {
         if(newAmount === 0){
             window.alert('请输入新的金额')
@@ -153,10 +163,18 @@ export const RecordsEdit:React.FC = () => {
                 <div>
                     <span>金额</span>
                     <input
-                            type = 'number'
-                            placeholder={record.amount.toString()}
+                            placeholder={newAmount.toString()}
+                            value={newAmount}
+                            onClick={(e)=>{
+                                e.currentTarget.selectionStart=e.currentTarget.selectionEnd=e.currentTarget.value.length
+                            }}
                             onChange={(e)=>{
-                                setNewAmount(parseInt(e.target.value))
+                                    let value = e.target.value.replace(/[^\d]/g,'')
+                                    if(value===''){
+                                        setNewAmount(0)
+                                    }else{
+                                        setNewAmount(parseInt(value))
+                                    }
                                 }
                             }
                     />
