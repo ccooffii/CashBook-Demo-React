@@ -106,6 +106,7 @@ export const RecordsEdit:React.FC = () => {
     const {findRecord,deleteRecord,updateRecord} = useRecords()
     const {findDay} = useDate()
     let record = findRecord(parseInt(id))
+    console.log(record);
     const [category,setCategory] = useState<('-'|'+')>('-')
     const [categoryList] = useState<('-'|'+')[]>(['-','+'])
     const [newAmount,setNewAmount] = useState(0)

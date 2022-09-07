@@ -35,10 +35,10 @@ export const TopBar = styled.header`
         height: 50px;
         width: 50px;
       }
-    }
+    }   
     >span{
       margin-right: 50vw;
-      font-size: 20px;
+      font-size: 15px;
       transform: translateX(50%);
     }
 `

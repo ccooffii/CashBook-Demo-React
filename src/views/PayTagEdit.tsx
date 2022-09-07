@@ -110,7 +110,6 @@ export const PayTagEdit: React.FC = () => {
                     }}>确定修改</AddButton>
                     <DeleteButton onClick={() => {
                         deleteTag(tag.id)
-                        // console.log(1)
                     }}>删除标签</DeleteButton>
                 </div>
             </EditWrapper>

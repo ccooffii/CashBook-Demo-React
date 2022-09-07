@@ -45,7 +45,7 @@ const  LineBox = styled.div`
   border: 2px solid black;
   border-radius: 10px;
   margin-bottom: 10px;
-  height: 200px;
+  height: 30vh;
   >div{
     height: 150px;
     width: 100%;
@@ -55,7 +55,7 @@ const PieBox = styled.div`
   border: 2px solid black;
   border-radius: 10px;
   margin-bottom: 10px;
-  height: 200px;
+  height: 30vh;
   >div{
     height: 150px;
     width: 100%;
