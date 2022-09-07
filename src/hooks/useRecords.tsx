@@ -46,6 +46,8 @@ export const useRecords = () => {
     const count = useRef(0);
     useEffect(() => {
         count.current += 1;
+        console.log(records)
+        // debugger
     })
     useEffect(()=>{
         if(count.current > 1){
