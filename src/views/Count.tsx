@@ -7,7 +7,7 @@ import {PayTagsSection} from "./count/PayTagListSection";
 import {useRecords} from "../hooks/useRecords";
 import {IncomeTagListSection} from "./count/IncomeTagListSection";
 
-const MyLayout = styled(Layout)`
+export const MyLayout = styled(Layout)`
     display: flex;
     flex-direction: column;
     align-items: center;

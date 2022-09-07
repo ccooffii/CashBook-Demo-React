@@ -7,6 +7,7 @@ import {useRecords} from "../hooks/useRecords";
 import {useTags} from "../hooks/useTags";
 import {useDate} from "../hooks/useDate";
 import {AddButton, DeleteButton} from "./PayTagEdit";
+import {set} from "lodash";
 type Params = {
     id:any
 }
@@ -125,11 +126,16 @@ export const RecordsEdit:React.FC = () => {
         <RecordBox>
             <TopBar>
                 <Link to='/statistics'><Icon name='return'></Icon></Link>
-                <span></span>
+                <span>编辑记录</span>
             </TopBar>
             <RecordInfoBox>
                 <div>
-                    <span>{getName(record.tagId)}</span><span><Icon name={IconMap[findTag(record.tagId).iconId].name}/></span>
+                    <span>
+                        {getName(record.tagId)}
+                    </span>
+                    <span>
+                        <Icon name={IconMap[findTag(record.tagId).iconId].name}/>
+                    </span>
                 </div>
                 <div>
                     <span>类型</span>
@@ -146,12 +152,10 @@ export const RecordsEdit:React.FC = () => {
                 <div>
                     <span>金额</span>
                     <input
-                           // onKeyUp="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*/g,′1')"
                             type = 'number'
-                            value={newAmount===0||NaN?record.amount:newAmount}
+                            placeholder={record.amount.toString()}
                             onChange={(e)=>{
-                                let value = e.target.value.replace(/\D|^0/g, '')
-                                setNewAmount(parseInt(value))
+                                setNewAmount(parseInt(e.target.value))
                                 }
                             }
                     />
@@ -170,13 +174,16 @@ export const RecordsEdit:React.FC = () => {
             </RecordInfoBox>
             <ButtonBox>
                 <AddButton
-                    // onClick={()=>updateRecord(record.recordId,category,newAmount,newNote)}
                     onClick={()=>submit()}
                 >
                     确认修改
                 </AddButton>
                 <DeleteButton
-                    onClick={()=>{deleteRecord(record.recordId);window.location.assign('./')}}
+                    onClick={()=>{
+                        deleteRecord(record.recordId);
+                        window.location.assign('./')
+                        }
+                    }
                 >
                     删除记录
                 </DeleteButton>

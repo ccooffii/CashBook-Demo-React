@@ -24,7 +24,7 @@ const Category = styled.section`
         text-align: center;
         font: inherit;
         font-weight: bolder;
-        font-size: 15px;
+        font-size: 20px;
         padding: 10px 0;
         &.selected{
           border-bottom: 3px solid rgb(232,131,147);

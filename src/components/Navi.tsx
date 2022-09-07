@@ -4,9 +4,6 @@ import React from "react";
 import styled from "styled-components";
 const NaviWrapper = styled.div`
   width: 100%;
-  height: 50px;
-  overflow-y: hidden;
-  overflow-x: hidden;
   .highLight{
     background-color: rgb(246,209,180);
   }

@@ -38,6 +38,7 @@ export const TopBar = styled.header`
     }
     >span{
       margin-right: 50vw;
+      font-size: 20px;
       transform: translateX(50%);
     }
 `

@@ -6,7 +6,7 @@ import {RecordItem, useRecords} from "../hooks/useRecords";
 import {useDate} from "../hooks/useDate";
 import {TopBar} from "./AddTag";
 import {useTags} from "../hooks/useTags";
-import _, {sum, values} from 'lodash'
+import _ from 'lodash'
 import day from 'dayjs'
 import {CategorySelectBox} from "./RecordsEdit";
 const TableBox = styled.div`
@@ -35,7 +35,7 @@ const TableBox = styled.div`
 const OverViewBox = styled.div`
   border: 2px solid black;
   border-radius: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   height: 100px;
   >div{
     height: 50px;
@@ -45,7 +45,7 @@ const  LineBox = styled.div`
   border: 2px solid black;
   border-radius: 10px;
   margin-bottom: 10px;
-  height: 210px;
+  height: 200px;
   >div{
     height: 150px;
     width: 100%;
@@ -55,11 +55,18 @@ const PieBox = styled.div`
   border: 2px solid black;
   border-radius: 10px;
   margin-bottom: 10px;
-  height: 210px;
+  height: 200px;
   >div{
     height: 150px;
     width: 100%;
   }
+`
+const MyTopBar = styled(TopBar)`
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 20px;
 `
 function Chart() {
     const line = useRef<any>(null)
@@ -278,7 +285,10 @@ function Chart() {
         }
         barChart.setOption({
                 grid: {
-                    top:70,
+                    top:0,
+                    left:10,
+                    right:50,
+                    bottom:0,
                 },
                 xAxis: {
                     type: 'value',
@@ -287,7 +297,6 @@ function Chart() {
                 yAxis: {
                     type: 'category',
                     show:false,
-                    data: [1]
                 },
                 series: [
                     {
@@ -318,8 +327,9 @@ function Chart() {
     })
     return (
         <Layout>
-            <TopBar>
-            </TopBar>
+            <MyTopBar>
+               分析
+            </MyTopBar>
             <TableBox>
                 <OverViewBox>
                     <h3>近七天收支情况: <span>{(weekIncome-weekCost)>0?'收入:￥'+(weekIncome-weekCost):'消费:￥'+-(weekIncome-weekCost)}</span></h3>
