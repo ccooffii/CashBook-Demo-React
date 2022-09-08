@@ -110,6 +110,7 @@ export const PayTagEdit: React.FC = () => {
                     }}>确定修改</AddButton>
                     <DeleteButton onClick={() => {
                         deleteTag(tag.id)
+                        window.location.assign('./')
                     }}>删除标签</DeleteButton>
                 </div>
             </EditWrapper>
@@ -117,10 +118,10 @@ export const PayTagEdit: React.FC = () => {
     } else {
         return (
             <EditWrapper>
-                <header>
+                <TopBar>
                     <Link to='/PayTagsSettings'><Icon name='return'></Icon></Link>
                     <span>你要找的标签丢了</span>
-                </header>
+                </TopBar>
             </EditWrapper>
         )
     }
