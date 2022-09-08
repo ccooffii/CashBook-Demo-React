@@ -29,7 +29,7 @@ export const TopBar = styled.header`
     justify-content: space-between;
     margin-bottom: 10px;
     overflow: hidden;
-  padding-left: 10px;
+    padding-left: 10px;
     > a {
       > svg {
         height: 50px;
@@ -78,6 +78,7 @@ export const InputBox = styled.header`
     font-size: 20px;
     background: none;
     border: none;
+    -webkit-user-select:text !important;
   }
 `
 const TagSelectBox = styled.div`
